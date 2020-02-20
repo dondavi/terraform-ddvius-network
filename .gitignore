@@ -1,6 +1,6 @@
 # Local .terraform directories
 #exclude API repo
-/api/timeservice/*
+/api/code/*
 
 */.terraform/*
 
