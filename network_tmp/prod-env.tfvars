@@ -15,13 +15,15 @@ apply
 
 */
 region="us-east-2"
-credentials="C:\\Users\\e1208991\\.aws\\credentials"
+credentials="C:\\Users\\username\\.aws\\credentials"
 profile="ddvi-us"
+# reference resources from network state
 vpc_id="vpc-0da26bcdcb7c7ee64"
 public_subnet_id="subnet-038905d3806cf67f9"
 private_subnet1_id="subnet-0c173cbcbfbc5cbcc"
 private_subnet2_id="subnet-0364b305b8cabf04d"
 private_subnet3_id="subnet-071eae8c00d3769f6"
+
 app_tag="api.ddvi.us"
 owner_tag="DDVIUS"
 
