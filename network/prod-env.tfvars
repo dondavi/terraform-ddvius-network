@@ -4,7 +4,7 @@
 >terraform apply -auto-aprove -var-file="prod-env.tfvars"
 */
 region="us-east-2"
-credentials="C:\\Users\\e1208991\\.aws\\credentials"
+credentials="C:\\Users\\username\\.aws\\credentials"
 profile="ddvi-us"
 app_tag="api.ddvi.us"
 owner_tag="DDVIUS"
