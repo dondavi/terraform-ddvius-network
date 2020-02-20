@@ -1,5 +1,8 @@
 # Local .terraform directories
-**/.terraform/*
+#exclude API repo
+/api/timeservice/*
+
+*/.terraform/*
 
 # .tfstate files
 *.tfstate
