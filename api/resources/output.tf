@@ -4,6 +4,9 @@ output "lambdafunction-details" {
 }
 
 output "deployment-url" {
-  value = "${aws_api_gateway_deployment.timeservice.invoke_url}"
+  value = "${aws_api_gateway_deployment.api_deployment.invoke_url}"
 }
 
+output "execution_arn" {
+  value = "${aws_api_gateway_deployment.api_deployment.execution_arn}"
+}
