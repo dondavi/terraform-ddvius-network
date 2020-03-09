@@ -7,6 +7,7 @@ resource "aws_api_gateway_resource" "api" {
   path_part   =  "${var.service_name}"
   parent_id   = "${aws_api_gateway_rest_api.rest_api.root_resource_id}"
   rest_api_id = "${aws_api_gateway_rest_api.rest_api.id}"
+  
   depends_on = ["aws_api_gateway_rest_api.rest_api"]
 }
 
@@ -55,7 +56,7 @@ resource "aws_api_gateway_integration_response" "IntegrationResponse" {
                  "aws_api_gateway_integration.integration"]
 }
 
-resource "aws_api_gateway_deployment" "timeservice" {
+resource "aws_api_gateway_deployment" "api_deployment" {
   
   rest_api_id = "${aws_api_gateway_rest_api.rest_api.id}"
   stage_name  = "${var.stage_name}"
@@ -115,15 +116,24 @@ resource "aws_iam_role_policy" "cloudwatch" {
 EOF
 }
 
+resource "aws_api_gateway_stage" "api_stage" {
+  stage_name="${var.stage_name}"
+  rest_api_id="${aws_api_gateway_rest_api.rest_api.id}"
+  deployment_id = "${aws_api_gateway_deployment.api_deployment.id}"
+  xray_tracing_enabled=true
+
+}
 
 resource "aws_api_gateway_method_settings" "method_settings" {
   rest_api_id = "${aws_api_gateway_rest_api.rest_api.id}"
   stage_name  = "${var.stage_name}"
   method_path = "${aws_api_gateway_resource.api.path}/${aws_api_gateway_method.method.http_method}"
-
+  
   settings {
     metrics_enabled = true
     logging_level   = "INFO"  //OFF, ERROR, and INFO.
+   
+
   }
 }
 /*
